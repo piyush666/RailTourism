@@ -43,7 +43,6 @@
         <li><a href="#">About Us</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
-        <li><a href="user/"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
         <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
        
       </ul>   
@@ -87,13 +86,12 @@ $t_arrtime = $_POST['t_arrtime'];
 		$conn = new connect();
 		$flag = 0;
 		$check = 'select * from book where t_class="'.$t_class.'" and t_no = "'.$t_no.'" and t_jdate="'.$t_jdate.'"';
-		
-		if($result = $conn->exeQuery($check)){
+		$result = $conn->exeQuery($check);
 
 		while ($row = $result->fetch_assoc()) {
 			++$flag;
 		}	
-	}
+
 	if($flag>= 5)
 	{
 		session_start();
