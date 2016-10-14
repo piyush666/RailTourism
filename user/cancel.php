@@ -41,7 +41,7 @@
         <li><a href="../trainSchedule.php">Train Schedule</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
-        <li><a href="../../rail/"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
+        <li><a href="../user/"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
         <li><a href="../logout.php"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
       </ul>   
     </div>
@@ -57,15 +57,15 @@ require '../phpfiles/classes.php';
 
 if(!empty($_POST['bookedId']))
 {
-  $que = 'delete from bookdetail where bookid="'.$_POST['bookedId'].'"';
+  //$que = 'delete from bookdetail where bookid="'.$_POST['bookedId'].'"';
   $query ='delete from book where bookid ="'.$_POST['bookedId'].'"';
   $conn = new connect();
-  if($conn->exeQuery($que)){
+  //if($conn->exeQuery($que)){
     if($conn->exeQuery($query))
       echo "Your reservation is cancel";
-  }
-  else
-      echo "not canceled";  
+ // }
+  //else
+   //   echo "not canceled";  
 }
 
 
@@ -87,8 +87,9 @@ if(empty($_SESSION['userId']))
   $conn = new connect();
   $que = 'select * from book where userId="'.$_SESSION['userId'].'"';
   $result = $conn->exeQuery($que);
-  if($r = $result->fetch_assoc())
+  if($result)
   {
+    $r = $result->fetch_assoc();
     echo  '<div class="col-lg-12 col-md-12 col-sm-12 table-responsive"><table class="table">
   <thead>
     <th>bookID</th>
@@ -124,6 +125,8 @@ if(empty($_SESSION['userId']))
     echo '<form name="cancelfrm" onsubmit="return cancelconfrim()" action="cancel.php" method="post">';
     echo '<input type="hidden" name="bookedId" value="'.$row['bookid'].'" required>';
     echo "<button type='submit' class='btn btn-danger'>cancel</button></form>";
+    echo "</td><td>";
+    echo "<a target='_blank' href='../printTicket.php?bookid=".$row['bookid']."'  >print Ticket </a>";
     echo "</td></tr>";
   }
   

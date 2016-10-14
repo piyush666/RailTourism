@@ -203,13 +203,13 @@ $_SESSION['noseat'] = '';
   <div class="row">
     <div class="col-lg-2  col-md-2  col-sm-2">
       <form name="srctodes" action="index.php" method="post">
-        src code:
-        <input class= "form-control" placeholder="src code" type="text" name="sname" id="srcst" autocomplete="off" autofocus required >
+        Source Station:
+        <input class= "form-control" placeholder="Source Station" type="text" name="sname" id="srcst" autocomplete="off" autofocus required >
         <div  class="showSlist" id="txtHint"></div>
-        dst code:
-        <input class= "form-control" placeholder="des code" type="text" name="dname" id="dstst" autocomplete="off" required >
+        Destination Station:
+        <input class= "form-control" placeholder="Destination Station" type="text" name="dname" id="dstst" autocomplete="off" required >
         <div class="showSlist" id="desHint"></div>
-        journey date:
+        Journey date:
         <input class= "form-control" type="date" name="jdate" id="datefield" onfocus="" required>
         <button class="btn btn-primary" type="submit">check</button>
       </form>
@@ -219,8 +219,6 @@ $_SESSION['noseat'] = '';
 
     <div class="col-lg-10 col-md-10 col-sm-10">
     <iframe  name="myf" src="../blank.php"   width="100%" frameborder="0" sandbox="allow-same-origin allow-scripts   allow-top-navigation allow-forms">
-    <p>dlfjgfgigfig</p>
-     
     </iframe>
    
    <?php 
@@ -304,7 +302,7 @@ $_SESSION['noseat'] = '';
         echo $trainno->number;
         echo "</td><td>";
 
-        echo  '<a target="_blank" href="../troute.php?tname_ro='.$trainno->number.  '">'.$trainno->name.'</a>';
+        echo  '<a target="_blank" href="../trainSchedule.php?tname_ro='.$trainno->number.  '">'.$trainno->name.'</a>';
         echo "</td><td>";
        // echo "&nbsp; &nbsp; &nbsp; &nbsp;";
         echo $trainno->from->name;

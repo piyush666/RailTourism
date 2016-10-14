@@ -16,7 +16,8 @@
     padding: 12px;
   }
   .showSlist{
-    height: 100px;
+   /* height: 100px;
+    */
     overflow: hidden;
   }
 
@@ -222,8 +223,8 @@
 
             $a = explode('-',$tdate);
             $tdate = $a[0].$a[1].$a[2];
-                        echo $tno;
-            echo '<br>' . $tdate . '<br>';
+            //echo $tno;
+            //echo '<br>' . $tdate . '<br>';
 
 
         }
@@ -236,12 +237,17 @@
                 $jsondata = file_get_contents($url);
                 $data = json_decode($jsondata);
 
-                echo $data->response_code;
-                echo $data->error;
+                //echo $data->response_code;
+               // echo $data->error;
                 foreach ($data->route as $route) {
                     echo $route->no;
 
                     echo "<br>";
+                }
+                if($data->error)
+                {
+                    echo "<h1 class='text text-info'>404 ERROR. PAGE IS NOT FOUND</h1>";
+                    echo "<img  class='img-responsive' src='images/errorstop.png'></img>";
                 }
             }
         ?>
